@@ -1,0 +1,19 @@
+[project]
+name = "ami"
+version = "0.1.0"
+description = "Checks for various computing environments"
+readme = "README.md"
+authors = [
+    { name = "Brian Connelly", email = "bdc@bconnelly.net" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3.4",
+]
