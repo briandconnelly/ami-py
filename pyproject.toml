@@ -1,13 +1,31 @@
 [project]
 name = "ami"
 version = "0.1.0"
-description = "Checks for various computing environments"
-readme = "README.md"
+description = "Simple functions to detect various runtime environments"
 authors = [
     { name = "Brian Connelly", email = "bdc@bconnelly.net" }
 ]
-requires-python = ">=3.11"
 dependencies = []
+requires-python = ">=3.11"
+readme = "README.md"
+license = { file = "LICENSE" }
+keywords = ["environment", "detection", "runtime", "container", "virtualenv", "ci"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: System :: Systems Administration",
+]
+
+[project.urls]
+Repository = "https://github.com/briandconnelly/ami-py"
+Issues = "https://github.com/briandconnelly/ami-py/issues"
 
 [build-system]
 requires = ["hatchling"]
@@ -21,4 +39,10 @@ dev = [
 
 [tool.ruff.lint]
 select = ["E", "F", "B", "I", "SIM"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
 

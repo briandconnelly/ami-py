@@ -1,53 +1,69 @@
+"""
+Tests for the virtualenv module.
+"""
+
 import os
+from pathlib import Path
+from typing import Any
+
 import pytest
+
 from ami.virtualenv import using_virtualenv
 
 
 @pytest.fixture
-def clean_env():
-    """Fixture to manage VIRTUAL_ENV environment variable state"""
-    # Save original environment variable if it exists
-    original_env = os.environ.get("VIRTUAL_ENV", None)
-
-    yield  # This is where the test runs
-
-    # Restore original environment variable
-    if original_env is not None:
-        os.environ["VIRTUAL_ENV"] = original_env
-    elif "VIRTUAL_ENV" in os.environ:
-        del os.environ["VIRTUAL_ENV"]
+def clean_env(monkeypatch) -> None:
+    """Remove virtualenv variables from environment."""
+    test_vars = {"VIRTUAL_ENV"}
+    for var in test_vars:
+        monkeypatch.delenv(var, raising=False)
 
 
-def test_no_virtualenv(clean_env):
-    """Test when no virtual environment is active"""
-    if "VIRTUAL_ENV" in os.environ:
-        del os.environ["VIRTUAL_ENV"]
-    assert not using_virtualenv()
-    assert not using_virtualenv("myenv")
+def test_using_virtualenv_no_env(clean_env: None, monkeypatch: Any) -> None:
+    """Test when no virtualenv is active."""
+    assert using_virtualenv() is False
+    assert using_virtualenv("/path/to/venv") is False
 
 
-def test_with_virtualenv_no_name(clean_env):
-    """Test when a virtual environment is active but no specific name is checked"""
-    os.environ["VIRTUAL_ENV"] = "/path/to/myenv"
-    assert using_virtualenv()
+def test_using_virtualenv_any(clean_env: None, monkeypatch: Any) -> None:
+    """Test detection of any virtualenv."""
+    monkeypatch.setenv("VIRTUAL_ENV", "/path/to/venv")
+    print(f"current value is {os.environ['VIRTUAL_ENV']}")
+    assert using_virtualenv() is True
 
 
-def test_with_virtualenv_matching_name(clean_env):
-    """Test when virtual environment matches the specified name"""
-    os.environ["VIRTUAL_ENV"] = "/path/to/myenv"
-    assert using_virtualenv("myenv")
+def test_using_virtualenv_specific_path_match(
+    clean_env: None, monkeypatch: Any
+) -> None:
+    """Test matching specific virtualenv path."""
+    venv_path = "/path/to/venv"
+    monkeypatch.setenv("VIRTUAL_ENV", venv_path)
+    assert using_virtualenv(venv_path) is True
+    assert using_virtualenv(Path(venv_path)) is True
 
 
-def test_with_virtualenv_non_matching_name(clean_env):
-    """Test when virtual environment doesn't match the specified name"""
-    os.environ["VIRTUAL_ENV"] = "/path/to/myenv"
-    assert not using_virtualenv("otherenv")
+def test_using_virtualenv_specific_path_no_match(
+    clean_env: None, monkeypatch: Any
+) -> None:
+    """Test non-matching virtualenv path."""
+    monkeypatch.setenv("VIRTUAL_ENV", "/path/to/venv1")
+    assert using_virtualenv("/path/to/venv2") is False
+    assert using_virtualenv(Path("/path/to/venv2")) is False
 
 
-# Alternative approach using pytest's monkeypatch
-def test_with_monkeypatch(monkeypatch):
-    """Test using pytest's monkeypatch fixture"""
-    monkeypatch.setenv("VIRTUAL_ENV", "/path/to/testenv")
-    assert using_virtualenv()
-    assert using_virtualenv("testenv")
-    assert not using_virtualenv("wrongenv")
+@pytest.mark.skipif(os.name != "nt", reason="Windows-specific path tests")
+def test_using_virtualenv_windows_paths(clean_env: None, monkeypatch: Any) -> None:
+    """Test Windows path handling."""
+    monkeypatch.setenv("VIRTUAL_ENV", r"C:\Users\test\venv")
+    assert using_virtualenv(r"C:\Users\test\venv") is True
+    assert using_virtualenv(Path(r"C:\Users\test\venv")) is True
+    assert using_virtualenv(r"C:\Users\test\other_venv") is False
+
+
+@pytest.mark.skipif(os.name == "nt", reason="Unix-specific path tests")
+def test_using_virtualenv_unix_paths(clean_env: None, monkeypatch: Any) -> None:
+    """Test Unix path handling."""
+    monkeypatch.setenv("VIRTUAL_ENV", "/home/user/venv")
+    assert using_virtualenv("/home/user/venv") is True
+    assert using_virtualenv(Path("/home/user/venv")) is True
+    assert using_virtualenv("/home/user/other_venv") is False
