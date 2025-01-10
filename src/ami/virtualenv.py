@@ -3,7 +3,7 @@ from pathlib import Path
 from .envvar import using_envvar
 
 
-def using_virtualenv(path: Path |str | None = None) -> bool:
+def using_virtualenv(path: Path | str | None = None) -> bool:
     """
     Check if a Python virtual environment is active.
 

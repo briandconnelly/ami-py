@@ -27,6 +27,7 @@ from .networking import online, using_host
 from .positron import using_positron, using_positron_desktop, using_positron_server
 from .python import using_python_version
 from .quarto import using_quarto
+from .testing import using_pytest, using_tox
 from .virtualenv import using_virtualenv
 from .vscode import using_vscode
 
@@ -54,6 +55,7 @@ __all__ = [
     "using_positron_desktop",
     "using_positron_server",
     "using_ppc_cpu",
+    "using_pytest",
     "using_python_version",
     "using_quarto",
     "using_s390_cpu",
@@ -61,4 +63,5 @@ __all__ = [
     "using_virtualenv",
     "using_vscode",
     "using_x86_cpu",
+    "using_tox",
 ]

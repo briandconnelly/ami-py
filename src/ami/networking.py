@@ -12,7 +12,7 @@ def online() -> bool:
         # Attempt to connect to a reliable host (Google's DNS server)
         socket.create_connection(("8.8.8.8", 53), timeout=3)
         return True
-    except OSError:
+    except (OSError, TimeoutError):
         return False
 
 
