@@ -91,4 +91,4 @@ def using_ci() -> bool:
         or using_gitlab_ci()
         or using_jenkins()
         or using_travis_ci()
-    ) 
+    )
