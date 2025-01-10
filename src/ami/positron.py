@@ -2,10 +2,12 @@
 Module for detecting Positron IDE environments.
 """
 
+from typing import Literal, Union
+
 from .envvar import using_envvar
 
 
-def using_positron(mode: "desktop" | "server" | None = None) -> bool:  # noqa: F821
+def using_positron(mode: Union[Literal["desktop"], Literal["server"], None] = None) -> bool:  # noqa: E501
     """
     Check if running in Positron IDE.
 
