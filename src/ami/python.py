@@ -58,7 +58,7 @@ def using_python_version(ver: Union[str, tuple[int, ...]]) -> bool:
     if isinstance(ver, tuple):
         if not 2 <= len(ver) <= 3:
             raise ValueError(
-                "Invalid version tuple. Must contain 2 or 3 integers (major, minor[, micro])" # noqa: E501
+                "Invalid version tuple. Must contain 2 or 3 integers (major, minor[, micro])"  # noqa: E501
             )
         return current[: len(ver)] == ver
 

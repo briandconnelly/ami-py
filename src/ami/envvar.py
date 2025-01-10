@@ -1,19 +1,6 @@
 import os
 
 
-def envvar_is_set(var: str) -> bool:
-    """
-    Check if an environment variable is set.
-
-    Args:
-        var (str): Name of the environment variable to check
-
-    Returns:
-        bool: True if the environment variable exists, False otherwise
-    """
-    return var in os.environ
-
-
 def using_envvar(var: str, value: str | None = None) -> bool:
     """
     Check if an environment variable is set and optionally matches a specific value.
