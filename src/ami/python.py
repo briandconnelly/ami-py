@@ -7,6 +7,14 @@ import sys
 from typing import Union
 
 
+def _parse_version(version_str: str) -> tuple[int, ...]:
+    """Parse version string into tuple of integers."""
+    parts = tuple(int(v) for v in version_str.split("."))
+    if len(parts) not in (2, 3):
+        raise ValueError('Invalid version string. Must be in format "X.Y" or "X.Y.Z"')
+    return parts
+
+
 def using_python_version(ver: Union[str, tuple[int, ...]]) -> bool:
     """
     Check if running on a specific Python version.
@@ -39,19 +47,11 @@ def using_python_version(ver: Union[str, tuple[int, ...]]) -> bool:
         for op_str, op_func in ops.items():
             if ver.startswith(op_str):
                 version_str = ver[len(op_str) :].strip()
-                parts = tuple(int(v) for v in version_str.split("."))
-                if len(parts) not in (2, 3):
-                    raise ValueError(
-                        'Invalid version string. Must be in format "X.Y" or "X.Y.Z"'
-                    )
+                parts = _parse_version(version_str)
                 return op_func(current[: len(parts)], parts)
 
         # No operator found, use equality comparison
-        parts = tuple(int(v) for v in ver.split("."))
-        if len(parts) not in (2, 3):
-            raise ValueError(
-                'Invalid version string. Must be in format "X.Y" or "X.Y.Z"'
-            )
+        parts = _parse_version(ver)
         return current[: len(parts)] == parts
 
     # Handle tuple input (e.g., (3, 11) or (3, 11, 0))

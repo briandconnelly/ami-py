@@ -4,6 +4,8 @@ Module for container-related functionality and detection.
 
 import os
 
+from .envvar import using_envvar
+
 
 def using_docker_container() -> bool:
     """
@@ -32,7 +34,7 @@ def using_kubernetes() -> bool:
     Returns:
         bool: True if running in a Kubernetes pod, False otherwise.
     """
-    return "KUBERNETES_SERVICE_HOST" in os.environ
+    return using_envvar("KUBERNETES_SERVICE_HOST")
 
 
 def using_container() -> bool:

@@ -3,7 +3,7 @@ Module for detecting CPU architectures.
 """
 
 import platform
-from typing import Literal, Union
+from typing import Literal
 
 
 def using_x86_cpu() -> bool:
@@ -50,7 +50,7 @@ def using_s390_cpu() -> bool:
     return machine.startswith("s390")
 
 
-def using_cpu(arch: Union[Literal["x86"], Literal["arm"], Literal["ppc"], Literal["s390"]]) -> bool:  # noqa: F821, E501
+def using_cpu(arch: Literal["x86", "arm", "ppc", "s390"]) -> bool:
     """
     Check if running on a specific CPU architecture.
 

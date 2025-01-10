@@ -12,13 +12,12 @@ def using_quarto() -> bool:
     Returns:
         bool: True if Quarto is available, False otherwise.
     """
-    quarto_vars = (
+    quarto_vars = {
         "QUARTO_DOCUMENT_PATH",
         "QUARTO_PROJECT_ROOT",
         "QUARTO_PROFILE",
         "QUARTO_FIG_WIDTH",
         "QUARTO_FIG_HEIGHT",
         "QUARTO_RUN_NO_NETWORK",
-    )
-
+    }
     return any(using_envvar(var) for var in quarto_vars)
