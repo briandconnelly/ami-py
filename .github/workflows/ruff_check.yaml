@@ -2,14 +2,18 @@ name: Check lints and formatting
 
 on:
   push:
-    branches: [main, master]
+    branches: [main]
   pull_request:
-    branches: [main, master]
+    branches: [main]
 
 permissions: read-all
 jobs:
   ruff:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.os }}
+    stragegy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+
     steps:
       - name: Get repo
         uses: actions/checkout@v4
