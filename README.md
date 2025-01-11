@@ -2,14 +2,6 @@
 
 `ami` (Am I...?) is a Python package that provides simple functions to detect various runtime environments and configurations.
 
-## Installation
-
-You can install `ami` using pip:
-
-```bash
-pip install ami
-```
-
 ## Requirements
 
 - Python 3.11 or higher
