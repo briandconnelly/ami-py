@@ -1,4 +1,4 @@
-name: Check lints and formatting
+name: Check lints and formatting with Ruff
 
 on:
   push:
@@ -9,11 +9,7 @@ on:
 permissions: read-all
 jobs:
   ruff:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-
+    runs-on: ubuntu-latest
     steps:
       - name: Get repo
         uses: actions/checkout@v4
