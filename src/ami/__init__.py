@@ -19,6 +19,7 @@ from .container import (
     using_docker_container,
     using_kubernetes,
     using_podman_container,
+    using_runpod,
 )
 from .cpu import using_arm_cpu, using_cpu, using_ppc_cpu, using_s390_cpu, using_x86_cpu
 from .databricks import using_databricks
@@ -58,6 +59,7 @@ __all__ = [
     "using_pytest",
     "using_python_version",
     "using_quarto",
+    "using_runpod",
     "using_s390_cpu",
     "using_travis_ci",
     "using_virtualenv",

@@ -37,6 +37,16 @@ def using_kubernetes() -> bool:
     return using_envvar("KUBERNETES_SERVICE_HOST")
 
 
+def using_runpod() -> bool:
+    """
+    Check if running in a RunPod.io environment.
+
+    Returns:
+        bool: True if running in RunPod.io, False otherwise.
+    """
+    return using_envvar("RUNPOD_POD_ID")
+
+
 def using_container() -> bool:
     """
     Check if running in any supported container (Docker or Podman).

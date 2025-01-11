@@ -12,6 +12,7 @@ from ami.container import (
     using_docker_container,
     using_kubernetes,
     using_podman_container,
+    using_runpod,
 )
 
 
@@ -115,3 +116,24 @@ def test_using_kubernetes(
     if env_var is not None and env_value is not None:
         monkeypatch.setenv(env_var, env_value)
     assert using_kubernetes() is expected
+
+
+@pytest.mark.parametrize(
+    "env_var,env_value,expected",
+    [
+        ("RUNPOD_POD_ID", "pod-123", True),  # RunPod environment
+        ("RUNPOD_POD_ID", "", True),  # Empty value
+        (None, None, False),  # Not RunPod
+    ],
+)
+def test_using_runpod(
+    clean_env: None,
+    monkeypatch: Any,
+    env_var: str | None,
+    env_value: str | None,
+    expected: bool,
+) -> None:
+    """Test RunPod.io detection."""
+    if env_var is not None and env_value is not None:
+        monkeypatch.setenv(env_var, env_value)
+    assert using_runpod() is expected
