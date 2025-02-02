@@ -21,7 +21,7 @@ jobs:
 
       - name: Run tests
         #run: uv run pytest tests
-        run: uv run pytest --cov-branch --cov-report=xml
+        run: uv run pytest --cov=./ --cov-branch --cov-report=xml tests
 
       - name: Upload results to Codecov
         uses: codecov/codecov-action@v5
