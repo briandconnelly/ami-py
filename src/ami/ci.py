@@ -3,6 +3,7 @@ Module for detecting continuous integration environments.
 """
 
 from .envvar import using_envvar
+from .github import using_github_actions
 
 
 def using_appveyor() -> bool:
@@ -33,16 +34,6 @@ def using_codebuild() -> bool:
         bool: True if running in CodeBuild, False otherwise.
     """
     return using_envvar("CODEBUILD_BUILD_ID")
-
-
-def using_github_actions() -> bool:
-    """
-    Check if running in GitHub Actions.
-
-    Returns:
-        bool: True if running in GitHub Actions, False otherwise.
-    """
-    return using_envvar("GITHUB_ACTIONS")
 
 
 def using_gitlab_ci() -> bool:
