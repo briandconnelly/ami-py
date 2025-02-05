@@ -76,9 +76,9 @@ def using_os(
         "NetBSD",
         "OpenBSD",
         "SunOS",
-        "Windows",  # noqa: E501
+        "Windows",
     ],
-) -> bool:  # noqa: E501
+) -> bool:
     """
     Check if running on a specific operating system.
 
