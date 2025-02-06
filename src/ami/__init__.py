@@ -37,6 +37,7 @@ from .os import (
     using_windows,
 )
 from .positron import using_positron, using_positron_desktop, using_positron_server
+from .power import using_ac_power, using_battery_power
 from .python import using_python_version
 from .quarto import using_quarto
 from .testing import using_pytest, using_tox
@@ -49,6 +50,8 @@ __all__ = [
     "using_aix",
     "using_appveyor",
     "using_arm_cpu",
+    "using_battery_power",
+    "using_ac_power",
     "using_ci",
     "using_circle_ci",
     "using_codebuild",
