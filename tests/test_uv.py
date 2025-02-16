@@ -33,4 +33,4 @@ def test_using_uv(
     """Test UV detection."""
     if env_var is not None and env_value is not None:
         monkeypatch.setenv(env_var, env_value)
-    assert using_uv() is expected 
+    assert using_uv() is expected

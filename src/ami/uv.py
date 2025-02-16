@@ -12,4 +12,4 @@ def using_uv() -> bool:
     Returns:
         bool: True if running in UV, False otherwise.
     """
-    return using_envvar("UV") 
+    return using_envvar("UV")
