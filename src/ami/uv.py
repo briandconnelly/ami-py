@@ -1,5 +1,5 @@
 """
-Module for detecting UV environments.
+Module for detecting uv environments.
 """
 
 from .envvar import using_envvar
@@ -7,9 +7,9 @@ from .envvar import using_envvar
 
 def using_uv() -> bool:
     """
-    Check if running in a UV package or project.
+    Check if running in a uv package or project environment
 
     Returns:
-        bool: True if running in UV, False otherwise.
+        bool: True if running in uv, False otherwise.
     """
     return using_envvar("UV")
