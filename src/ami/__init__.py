@@ -41,6 +41,7 @@ from .power import using_ac_power, using_battery_power
 from .python import using_python_version
 from .quarto import using_quarto
 from .testing import using_pytest, using_tox
+from .uv import using_uv
 from .virtualenv import using_virtualenv
 from .vscode import using_vscode
 
@@ -86,6 +87,7 @@ __all__ = [
     "using_solaris",
     "using_tox",
     "using_travis_ci",
+    "using_uv",
     "using_virtualenv",
     "using_vscode",
     "using_windows",
