@@ -7,7 +7,7 @@
 [![Codecov test
 coverage](https://codecov.io/gh/briandconnelly/ami-py/branch/main/graph/badge.svg)](https://app.codecov.io/gh/briandconnelly/ami-py?branch=main)
 
-`ami` (Am I...?) provides simple functions that allow your Python code to detect and adapt to the environment in which it is being run.
+`ami` (Am I...?) is a collection of simple functions that allow your Python code to detect and adapt to the environment in which it is being run.
 
 
 ## Examples
