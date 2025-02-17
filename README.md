@@ -1,13 +1,13 @@
 # ami
 
-![Decvelopment Status](https://img.shields.io/badge/dev%20status-beta-orange)
+![Development Status](https://img.shields.io/badge/dev%20status-beta-orange)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/ami)
 ![PyPI - License](https://img.shields.io/pypi/l/ami)
 ![PyPI - Version](https://img.shields.io/pypi/v/ami)
 [![Codecov test
 coverage](https://codecov.io/gh/briandconnelly/ami-py/branch/main/graph/badge.svg)](https://app.codecov.io/gh/briandconnelly/ami-py?branch=main)
 
-`ami` (Am I...?) is a Python package that provides simple functions to detect various runtime environments and configurations.
+`ami` (Am I...?) provides simple functions that allow your Python code to detect and adapt to the environment in which it is being run.
 
 
 ## Examples
