@@ -32,6 +32,7 @@ def test_using_virtualenv_any(clean_env: None, monkeypatch: Any) -> None:
     assert using_virtualenv() is True
 
 
+@pytest.mark.skipif(os.name == "nt", reason="Unix-specific path test")
 def test_using_virtualenv_specific_path_match(
     clean_env: None, monkeypatch: Any
 ) -> None:
