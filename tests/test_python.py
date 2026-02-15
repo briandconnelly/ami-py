@@ -3,7 +3,7 @@ Tests for the python module.
 """
 
 import sys
-from typing import Any, Union
+from typing import Any
 
 import pytest
 
@@ -42,9 +42,7 @@ def get_current_version() -> tuple[int, ...]:
         ((sys.version_info[0], sys.version_info[1] - 1), False),  # Past tuple
     ],
 )
-def test_using_python_version(
-    version: Union[str, tuple[int, ...]], expected: bool
-) -> None:
+def test_using_python_version(version: str | tuple[int, ...], expected: bool) -> None:
     """Test Python version detection with various version formats."""
     assert using_python_version(version) is expected
 
@@ -69,5 +67,5 @@ def test_using_python_version(
 )
 def test_using_python_version_invalid(version: Any) -> None:
     """Test Python version detection with invalid version formats."""
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match=r"Invalid|Version must be|invalid literal"):
         using_python_version(version)

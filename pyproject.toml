@@ -40,8 +40,8 @@ dev = [
 ]
 
 [tool.ruff.lint]
-select = ["E", "F", "B", "I", "SIM"]
-ignore = []
+select = ["E", "F", "B", "I", "SIM", "UP", "PT", "RUF"]
+ignore = ["PT006"]
 
 [tool.ruff.format]
 quote-style = "double"
