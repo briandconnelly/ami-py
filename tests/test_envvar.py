@@ -83,7 +83,7 @@ def test_using_envvar_case_sensitivity(clean_env: None, monkeypatch: Any) -> Non
 
 @pytest.mark.skipif(sys.platform != "win32", reason="This test only runs on Windows")
 def test_using_envvar_case_sensitivity_win(clean_env: None, monkeypatch: Any) -> None:
-    """Test that env var names are case-insensitive on Windows but values are case-sensitive."""
+    """Test env var names are case-insensitive on Windows, values are not."""
     monkeypatch.setenv("MIXED_CASE_VAR", "MiXeD_CaSe")
     # Env var names are case-insensitive on Windows
     assert using_envvar("mixed_case_var") is True
