@@ -4,7 +4,6 @@ Module for detecting Python environment details.
 
 import operator
 import sys
-from typing import Union
 
 
 def _parse_version(version_str: str) -> tuple[int, ...]:
@@ -15,7 +14,7 @@ def _parse_version(version_str: str) -> tuple[int, ...]:
     return parts
 
 
-def using_python_version(ver: Union[str, tuple[int, ...]]) -> bool:
+def using_python_version(ver: str | tuple[int, ...]) -> bool:
     """
     Check if running on a specific Python version.
 

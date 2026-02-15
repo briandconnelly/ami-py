@@ -47,12 +47,12 @@ from .vscode import using_vscode
 
 __all__ = [
     "online",
+    "using_ac_power",
     "using_account",
     "using_aix",
     "using_appveyor",
     "using_arm_cpu",
     "using_battery_power",
-    "using_ac_power",
     "using_ci",
     "using_circle_ci",
     "using_codebuild",

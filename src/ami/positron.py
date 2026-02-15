@@ -7,7 +7,7 @@ from typing import Literal
 from .envvar import using_envvar
 
 
-def using_positron(mode: Literal["desktop", "server"] | None = None) -> bool:  # noqa: E501
+def using_positron(mode: Literal["desktop", "server"] | None = None) -> bool:
     """
     Check if running in Positron IDE.
 
