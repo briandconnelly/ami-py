@@ -41,6 +41,16 @@ def using_gemini_cli() -> bool:
     return using_envvar("GEMINI_CLI", "1")
 
 
+def using_goose() -> bool:
+    """
+    Check if running in Goose.
+
+    Returns:
+        bool: True if running in Goose, False otherwise.
+    """
+    return using_envvar("GOOSE_TERMINAL", "1")
+
+
 def using_opencode() -> bool:
     """
     Check if running in OpenCode.
@@ -62,5 +72,6 @@ def using_coding_agent() -> bool:
         using_envvar("AGENT", "1")
         or using_claude_code()
         or using_gemini_cli()
+        or using_goose()
         or using_opencode()
     )

@@ -10,6 +10,7 @@ from ami.coding_agent import (
     using_claude_code,
     using_coding_agent,
     using_gemini_cli,
+    using_goose,
     using_opencode,
 )
 
@@ -22,6 +23,7 @@ def clean_env(monkeypatch: Any) -> None:
         "CLAUDECODE",
         "CLAUDE_CODE_ENTRYPOINT",
         "GEMINI_CLI",
+        "GOOSE_TERMINAL",
         "OPENCODE",
     ):
         monkeypatch.delenv(var, raising=False)
@@ -88,6 +90,27 @@ def test_using_gemini_cli(
         (None, False),
     ],
 )
+def test_using_goose(
+    clean_env: None,
+    monkeypatch: Any,
+    env_value: str | None,
+    expected: bool,
+) -> None:
+    """Test Goose detection."""
+    if env_value is not None:
+        monkeypatch.setenv("GOOSE_TERMINAL", env_value)
+    assert using_goose() is expected
+
+
+@pytest.mark.parametrize(
+    "env_value,expected",
+    [
+        ("1", True),
+        ("0", False),
+        ("", False),
+        (None, False),
+    ],
+)
 def test_using_opencode(
     clean_env: None,
     monkeypatch: Any,
@@ -106,6 +129,7 @@ def test_using_opencode(
         ({"AGENT": "1"}, True),  # Generic AGENT
         ({"CLAUDECODE": "1"}, True),  # Claude Code
         ({"GEMINI_CLI": "1"}, True),  # Gemini CLI
+        ({"GOOSE_TERMINAL": "1"}, True),  # Goose
         ({"OPENCODE": "1"}, True),  # OpenCode
         ({"AGENT": "0"}, False),  # AGENT != 1
         ({}, False),  # No agent

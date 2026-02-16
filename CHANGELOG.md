@@ -7,6 +7,7 @@
 - `using_coding_agent()` for detecting any AI coding agent environment
 - `using_claude_code()` for detecting Claude Code (with optional `entrypoint` parameter)
 - `using_gemini_cli()` for detecting Gemini CLI
+- `using_goose()` for detecting Goose
 - `using_opencode()` for detecting OpenCode
 
 

@@ -3,7 +3,13 @@ from importlib.metadata import version
 __version__ = version("ami")
 
 from .account import using_account
-from .coding_agent import using_claude_code, using_coding_agent, using_gemini_cli, using_opencode
+from .coding_agent import (
+    using_claude_code,
+    using_coding_agent,
+    using_gemini_cli,
+    using_goose,
+    using_opencode,
+)
 from .ci import (
     using_appveyor,
     using_ci,
@@ -67,6 +73,7 @@ __all__ = [
     "using_envvar",
     "using_freebsd",
     "using_gemini_cli",
+    "using_goose",
     "using_github_actions",
     "using_github_codespaces",
     "using_gitlab_ci",
