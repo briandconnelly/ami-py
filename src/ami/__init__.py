@@ -3,6 +3,7 @@ from importlib.metadata import version
 __version__ = version("ami")
 
 from .account import using_account
+from .coding_agent import using_claude_code, using_coding_agent, using_gemini_cli, using_opencode
 from .ci import (
     using_appveyor,
     using_ci,
@@ -54,6 +55,8 @@ __all__ = [
     "using_arm_cpu",
     "using_battery_power",
     "using_ci",
+    "using_claude_code",
+    "using_coding_agent",
     "using_circle_ci",
     "using_codebuild",
     "using_conda",
@@ -63,6 +66,7 @@ __all__ = [
     "using_docker_container",
     "using_envvar",
     "using_freebsd",
+    "using_gemini_cli",
     "using_github_actions",
     "using_github_codespaces",
     "using_gitlab_ci",
@@ -72,6 +76,7 @@ __all__ = [
     "using_linux",
     "using_macos",
     "using_netbsd",
+    "using_opencode",
     "using_openbsd",
     "using_os",
     "using_podman_container",
